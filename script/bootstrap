@@ -1,5 +1,19 @@
 #!/usr/bin/env bash
 
 set -e
+echo
+
+# Handy indentation function to line it all up.
+indent() {
+  sed "s/^/     /"
+}
 
 bundle install --quiet "$@"
+
+# Create the .env containing all environment variables if not already done.
+echo "---> Checking for .env file"
+if [[ ! -f ".env" ]] ; then
+  touch .env
+  echo "---> Environment file has been created"
+fi
+echo "---> Environment file found"

@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 set -e
+echo
 
 # Handy indentation function to line it all up.
 indent() {
@@ -19,7 +20,7 @@ echo "---> Pre-checks all passed"
 
 # Bundle it all up.
 echo "---> Fetching all dependencies"
-bundle install | indent
+bundle install --quiet "$@"
 echo "---> Bundling completed"
 
 # Run the test suite.
