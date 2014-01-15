@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#
+# Start the web server.
+
+foreman start
