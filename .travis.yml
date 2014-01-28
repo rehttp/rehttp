@@ -2,4 +2,4 @@ language: ruby
 rvm:
   - "2.1.0"
 script: "bundle exec rspec spec"
-before_install: "ruby ./script/cibuild"
+before_install: "script/cibuild"
