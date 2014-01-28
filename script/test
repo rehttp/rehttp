@@ -25,5 +25,5 @@ echo "---> Bundling completed"
 
 # Run the test suite.
 echo "---> Starting test suite"
-bundle exec rspec spec --format documentation | indent
+bundle exec rspec spec | indent
 echo "---> Test suite completed"
