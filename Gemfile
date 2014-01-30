@@ -12,7 +12,11 @@ gem 'pg'
 gem 'unicorn'
 gem 'foreman'
 
+# Monitoring
+gem 'newrelic_rpm'
+
 # Assets.
+gem 'bootstrap-sass', '~> 3.0.3.0'
 gem 'sass-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
@@ -30,4 +34,5 @@ group :development, :test do
   gem 'binding_of_caller'
   gem 'dotenv-rails'
   gem 'pry'
+  gem 'pry-rails'
 end

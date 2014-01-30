@@ -32,6 +32,8 @@ GEM
       erubis (>= 2.6.6)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bootstrap-sass (3.0.3.0)
+      sass (~> 3.2)
     builder (3.1.4)
     coderay (1.1.0)
     coffee-rails (4.0.1)
@@ -68,12 +70,15 @@ GEM
     minitest (4.7.5)
     multi_json (1.8.4)
     multipart-post (2.0.0)
+    newrelic_rpm (3.7.1.188)
     pg (0.17.1)
     polyglot (0.3.3)
     pry (0.9.12.4)
       coderay (~> 1.0)
       method_source (~> 0.8)
       slop (~> 3.4)
+    pry-rails (0.3.2)
+      pry (>= 0.9.10)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -143,13 +148,16 @@ PLATFORMS
 DEPENDENCIES
   better_errors
   binding_of_caller
+  bootstrap-sass (~> 3.0.3.0)
   coffee-rails (~> 4.0.0)
   dotenv-rails
   faraday
   foreman
   jquery-rails
+  newrelic_rpm
   pg
   pry
+  pry-rails
   rails (= 4.0.2)
   rspec-rails
   sass-rails (~> 4.0.0)
