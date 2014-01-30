@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <div id="request">
+      <%= form_for @request, :url => create_request_path, html: { :class => 'form-inline' }, :remote => true do %>
+      <div class="col-md-6">
+        <%= label_tag(:url, 'URL', :class => 'sr-only') %>
+        <%= url_field_tag(:url, '', { :class => 'form-control', :placeholder => 'Enter your URL...' }) %>
+      </div>
+      <div class="col-md-6">
+        <%= select_tag 'request_type', options_for_select(%w(GET)), :class => 'form-control' %>
+        <!-- <%= check_box_tag(:private_request, 1) %>
+        <%= label_tag(:private_request, 'Private?') %> -->
+        <%= submit_tag "Send", :id => 'send-request', :class => 'btn btn-success' %>
+      </div>
+      <% end %>
+    </div> <!-- /#request -->
+  </div> <!-- /.row -->
+
+  <hr>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div id="response">
+      </div> <!-- /#response -->
+    </div>
+  </div>
+</div>

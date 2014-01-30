@@ -1,3 +1,7 @@
-// Place all the styles related to the Requests controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'application_defaults.css.scss';
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}

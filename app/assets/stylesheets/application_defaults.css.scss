@@ -1,0 +1,28 @@
+$container-lg: 75%;
+
+@import 'bootstrap';
+
+$sans-font-stack: "Helvetica Neue", helvetica, arial, san-serif;
+$mono-font-stack: Monaco, Consolas, "Libration Mono", monospace;
+
+* {
+  font-family: $sans-font-stack;
+}
+
+body {
+  margin-top: 20px;
+}
+
+h2 {
+  padding: 0 0 10px 0;
+}
+
+h4 {
+  padding: 10px 0;
+}
+
+h3 {
+  padding: 0;
+  margin: 0;
+  font-size: 18px;
+}
