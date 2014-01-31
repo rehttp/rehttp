@@ -2,14 +2,15 @@
   <div class="row">
     <div id="request">
       <%= form_for @request, :url => create_request_path, html: { :class => 'form-inline' }, :remote => true do %>
-      <div class="col-md-6">
-        <%= label_tag(:url, 'URL', :class => 'sr-only') %>
-        <%= url_field_tag(:url, '', { :class => 'form-control', :placeholder => 'Enter your URL...' }) %>
+      <div class="col-md-1">
+        <%= select_tag 'request_type', options_for_select(%w(GET)), :class => 'request-type form-control' %>
       </div>
-      <div class="col-md-6">
-        <%= select_tag 'request_type', options_for_select(%w(GET)), :class => 'form-control' %>
+      <div class="col-md-11">
+        <%= url_field_tag(:url, '', { :class => 'request-url form-control', :placeholder => 'Enter your URL...' }) %>
+      </div>
+      <div class="request-submission col-md-12">
         <!-- <%= check_box_tag(:private_request, 1) %>
-        <%= label_tag(:private_request, 'Private?') %> -->
+        <%= label_tag(:private_request, 'Private request?') %> -->
         <%= submit_tag "Send", :id => 'send-request', :class => 'btn btn-success' %>
       </div>
       <% end %>
