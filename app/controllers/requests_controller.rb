@@ -28,7 +28,7 @@ class RequestsController < ApplicationController
     # database.
     def request_params
       request = send_get_request(params[:url])
-      request.headers = { 'User-Agent' => 'reHTTP/1.0' }
+      request.headers = { 'User-Agent' => 'ReHTTP/1.0' }
       response = request.get
 
       {
