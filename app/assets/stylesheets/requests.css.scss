@@ -22,3 +22,12 @@ ul {
   }
 }
 
+#js-request-parameters-container,
+#js-request-headers-container {
+  display: none;
+
+  textarea {
+    height: 100px;
+    resize: none;
+  }
+}
