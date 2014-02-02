@@ -1,26 +1,28 @@
-<h2><%= @request_type %> <small><%= @url %></small></h2>
-
-<h4>Request Headers</h4>
-<ul>
-  <% @request_data['headers'].each do |header_name, header_value| %>
-    <li>
-      <strong><%= header_name %>: </strong><%= header_value %>
-    </li>
-  <% end %>
-</ul>
-
-<hr>
-
-<h4>Response Headers</h4>
-<ul>
-  <% @response_data['headers'].each do |header_name, header_value| %>
-    <li>
-      <strong><%= format_http_header header_name %>: </strong><%= header_value %>
-    </li>
-  <% end %>
-</ul>
-
-<h4>Body</h4>
 <div class="row">
-  <pre><%= h @response_data['body'] %></pre>
+  <h2><%= @request_type %> <small><%= @url %></small></h2>
+
+  <h4>Request Headers</h4>
+  <ul>
+    <% @request_data['headers'].each do |header_name, header_value| %>
+      <li>
+        <strong><%= header_name %>: </strong><%= header_value %>
+      </li>
+    <% end %>
+  </ul>
+
+  <hr>
+
+  <h4>Response Headers</h4>
+  <ul>
+    <% @response_data['headers'].each do |header_name, header_value| %>
+      <li>
+        <strong><%= format_http_header header_name %>: </strong><%= header_value %>
+      </li>
+    <% end %>
+  </ul>
+
+  <h4>Body</h4>
+  <div class="row">
+    <pre><%= h @response_data['body'] %></pre>
+  </div>
 </div>

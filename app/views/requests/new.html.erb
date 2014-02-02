@@ -1,28 +1,37 @@
 <div class="container">
-  <div class="row">
-    <div id="request">
-      <%= form_for @request, :url => create_request_path, html: { :class => 'form-inline' }, :remote => true do %>
-      <div class="col-md-1">
-        <%= select_tag 'request_type', options_for_select(%w(GET)), :class => 'request-type form-control' %>
+  <div id="request">
+    <%= form_for @request, :url => create_request_path, html: { :class => 'form-horizontal' }, :remote => true do %>
+
+    <!-- URL -->
+    <div class="form-group">
+      <div class="col-md-2">
+        <%= select_tag 'request_type', options_for_select(%w(GET POST)), :class => 'request-type form-control' %>
       </div>
-      <div class="col-md-11">
+      <div class="col-md-10">
         <%= url_field_tag(:url, '', { :class => 'request-url form-control', :placeholder => 'Enter your URL...' }) %>
       </div>
-      <div class="request-submission col-md-12">
-        <!-- <%= check_box_tag(:private_request, 1) %>
-        <%= label_tag(:private_request, 'Private request?') %> -->
-        <%= submit_tag "Send", :id => 'send-request', :class => 'btn btn-success' %>
+    </div>
+
+    <!-- Authentication -->
+    <div class="form-group">
+      <div class="col-md-2">
+        <%= label_tag 'Authentication', nil, class: 'form-label' %>
       </div>
-      <% end %>
-    </div> <!-- /#request -->
-  </div> <!-- /.row -->
+      <div class="col-md-10">
+        <%= text_field_tag 'username', nil, class: 'auth_username form-control', :placeholder => 'Username' %>
+        <%= password_field_tag 'password', nil, class: 'auth_password form-control', :placeholder => 'Password' %>
+      </div>
+    </div>
+
+    <div class="form-group request-submission col-md-12">
+      <!-- <%= check_box_tag(:private_request, 1) %>
+      <%= label_tag(:private_request, 'Private request?') %> -->
+      <%= submit_tag "Send", :id => 'send-request', :class => 'btn btn-success' %>
+    </div>
+    <% end %>
+  </div> <!-- /#request -->
 
   <hr>
 
-  <div class="row">
-    <div class="col-md-12">
-      <div id="response">
-      </div> <!-- /#response -->
-    </div>
-  </div>
+  <div id="response"></div> <!-- /#response -->
 </div>
