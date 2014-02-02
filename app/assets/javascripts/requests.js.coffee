@@ -7,3 +7,11 @@ $('#request').bind 'ajax:success', (evt, data, status) ->
     error: (a, b, c) ->
       # Log this error
   }
+
+$('#js-add-request-basic-auth').click ->
+  $('#js-add-request-basic-auth').hide()
+  $('#request-basic-auth').show()
+
+$('#js-hide-request-basic-auth').click ->
+  $('#js-add-request-basic-auth').show()
+  $('#request-basic-auth').hide()

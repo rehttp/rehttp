@@ -10,6 +10,15 @@ ul {
   padding-top: 20px;
 }
 
-.auth_username {
-  margin-bottom: 10px;
+#request-basic-auth {
+  display: none;
+
+  .auth_username {
+    margin-bottom: 10px;
+  }
+
+  .auth_password {
+    margin-bottom: 5px;
+  }
 }
+

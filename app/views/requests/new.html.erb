@@ -18,8 +18,38 @@
         <%= label_tag 'Authentication', nil, class: 'form-label' %>
       </div>
       <div class="col-md-10">
-        <%= text_field_tag 'username', nil, class: 'auth_username form-control', :placeholder => 'Username' %>
-        <%= password_field_tag 'password', nil, class: 'auth_password form-control', :placeholder => 'Password' %>
+        <button type="button" class="btn btn-sm btn-default" id="js-add-request-basic-auth">
+          <span class="glyphicon glyphicon-plus"></span> Add basic authentication
+        </button>
+        <div id="request-basic-auth">
+          <%= text_field_tag 'username', nil, class: 'auth_username form-control', :placeholder => 'Username' %>
+          <%= password_field_tag 'password', nil, class: 'auth_password form-control', :placeholder => 'Password' %>
+          <a href="" id="js-hide-request-basic-auth">Remove authentication</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Parameters -->
+    <div class="form-group">
+      <div class="col-md-2">
+        <%= label_tag 'Parameters', nil, class: 'form-label' %>
+      </div>
+      <div class="col-md-10">
+        <button type="button" class="btn btn-sm btn-default" id="js-add-request-parameter">
+          <span class="glyphicon glyphicon-plus"></span> Add a parameter
+        </button>
+      </div>
+    </div>
+
+    <!-- HTTP headers -->
+    <div class="form-group">
+      <div class="col-md-2">
+        <%= label_tag 'Custom headers', nil, class: 'form-label' %>
+      </div>
+      <div class="col-md-10">
+        <button type="button" class="btn btn-sm btn-default" id="js-add-request-custom-header">
+          <span class="glyphicon glyphicon-plus"></span> Add custom HTTP header
+        </button>
       </div>
     </div>
 
