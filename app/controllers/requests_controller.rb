@@ -27,15 +27,37 @@ class RequestsController < ApplicationController
     # Build the request parameters and correct structure for inserting into the
     # database.
     def request_params
-      request = send_get_request(params[:url])
-      request.headers = { 'User-Agent' => 'ReHTTP/1.0' }
-      response = request.get
+      rid             = SecureRandom.uuid
+      request_type    = params[:request_type]
+      request_url     = params[:url]
+      request_data    = {}
+      username        = params[:username]
+      password        = params[:password]
+      private_request = params[:private_request]
+
+      request = Faraday.new
+
+      # If authentication is filled out, apply it.
+      if username.present?
+        request.basic_auth(username, password)
+      end
+
+      # Be nice and send a descriptive user agent. Also handy for debugging and
+      # tracking down potential problems.
+      request.headers['User-Agent'] = 'ReHTTP/v1.0'
+
+      case request_type
+      when 'GET'
+        response = request.get request_url
+      when 'POST'
+        response = request.post(request_url, request_data)
+      end
 
       {
-        :rid             => SecureRandom.uuid,
-        :request_type    => params[:request_type],
-        :url             => params[:url],
-        :private_request => params[:private_request],
+        :rid             => rid,
+        :request_type    => request_type,
+        :url             => request_url,
+        :private_request => private_request,
         :request_data => {
           :headers => request.headers,
           :data    => {},
@@ -46,9 +68,5 @@ class RequestsController < ApplicationController
           :status  => response.status,
         }.to_json
       }
-    end
-
-    def send_get_request(url)
-      conn = Faraday.new(url)
     end
 end
