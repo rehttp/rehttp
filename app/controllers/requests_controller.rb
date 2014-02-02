@@ -51,6 +51,16 @@ class RequestsController < ApplicationController
         response = request.get request_url
       when 'POST'
         response = request.post(request_url, request_data)
+      when 'PUT'
+        response = request.put(request_url, request_data)
+      when 'DELETE'
+        response = request.delete request_url
+      when 'OPTIONS'
+        response = request.options request_url
+      when 'HEAD'
+        response = request.head request_url
+      when 'PATCH'
+        response = request.patch request_url
       end
 
       {

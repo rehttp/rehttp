@@ -5,7 +5,7 @@
     <!-- URL -->
     <div class="form-group">
       <div class="col-md-2">
-        <%= select_tag 'request_type', options_for_select(%w(GET POST)), :class => 'request-type form-control' %>
+        <%= select_tag 'request_type', options_for_select(%w(GET POST PUT DELETE OPTIONS HEAD PATCH)), :class => 'request-type form-control' %>
       </div>
       <div class="col-md-10">
         <%= url_field_tag(:url, '', { :class => 'request-url form-control', :placeholder => 'Enter your URL...' }) %>
