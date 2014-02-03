@@ -1,6 +1,8 @@
 require 'securerandom'
 
 class RequestsController < ApplicationController
+  include RequestsHelper
+
   # Show an individual request.
   def show
     @rid = Requests.find_by(rid: params[:rid])
@@ -27,13 +29,14 @@ class RequestsController < ApplicationController
     # Build the request parameters and correct structure for inserting into the
     # database.
     def request_params
-      rid             = SecureRandom.uuid
-      request_type    = params[:request_type]
-      request_url     = params[:url]
-      request_data    = {}
-      username        = params[:username]
-      password        = params[:password]
-      private_request = params[:private_request]
+      rid                = SecureRandom.uuid
+      request_type       = params[:request_type]
+      request_url        = params[:url]
+      request_parameters = params[:request_parameters]
+      request_headers    = params[:request_headers]
+      username           = params[:username]
+      password           = params[:password]
+      private_request    = params[:private_request]
 
       request = Faraday.new
 
@@ -46,9 +49,16 @@ class RequestsController < ApplicationController
       # tracking down potential problems.
       request.headers['User-Agent'] = 'ReHTTP/v1.0'
 
+      # Split the additional headers out into the name and value and then apply
+      # then to the request.
+      request_headers.split("\r\n").each do |header|
+        header_components = header.split(':')
+        request.headers[header_components[0]] = header_components[1]
+      end
+
       case request_type
       when 'GET'
-        response = request.get request_url
+        response = request.get build_query_string(request_url, request_parameters)
       when 'POST'
         response = request.post(request_url, request_data)
       when 'PUT'

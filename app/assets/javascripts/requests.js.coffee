@@ -23,12 +23,24 @@ $('#js-hide-request-basic-auth').click (e) ->
   $('#js-add-request-basic-auth').show()
   $('#request-basic-auth').hide()
 
+# Parameter container and interaction.
 $('#js-add-request-parameter').click (e) ->
-  e.preventDefault()
   $('#js-add-request-parameter').hide()
   $('#js-request-parameters-container').show()
 
-$('#js-request-add-headers').click (e) ->
+$('#js-hide-request-parameters-container').click (e) ->
   e.preventDefault()
+  $('#request_parameters').val('')
+  $('#js-request-parameters-container').hide()
+  $('#js-add-request-parameter').show()
+
+# Header container and interaction.
+$('#js-request-add-headers').click (e) ->
   $('#js-request-add-headers').hide()
   $('#js-request-headers-container').show()
+
+$('#js-hide-request-headers-container').click (e) ->
+  e.preventDefault()
+  $('#request_headers').val('')
+  $('#js-request-add-headers').show()
+  $('#js-request-headers-container').hide()
