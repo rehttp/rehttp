@@ -18,8 +18,3 @@ if [[ ! -f "Gemfile" ]] ; then
   exit 1
 fi
 echo "---> Pre-checks all passed"
-
-# Run the test suite.
-echo "---> Starting test suite"
-bundle exec rspec spec | indent
-echo "---> Test suite completed"
