@@ -4,11 +4,6 @@ set -e
 
 script/bootstrap
 
-# Handy indentation function to line it all up.
-indent() {
-  sed "s/^/     /"
-}
-
 # Ensure that we are running this from the root of the project. If the script is
 # run from anywhere else, files can end up in the wrong spot.
 echo "---> Running test suite setup checks"
