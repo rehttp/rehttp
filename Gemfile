@@ -13,9 +13,6 @@ gem 'pg'
 gem 'unicorn'
 gem 'foreman'
 
-# Monitoring
-gem 'newrelic_rpm'
-
 # Assets.
 gem 'bootstrap-sass', '~> 3.0.3.0'
 gem 'sass-rails', '~> 4.0.0'
@@ -36,4 +33,9 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'pry'
   gem 'pry-rails'
+end
+
+group :production do
+  # Monitoring
+  gem 'newrelic_rpm'
 end
