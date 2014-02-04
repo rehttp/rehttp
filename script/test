@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 set -e
-echo
+
+script/bootstrap
 
 # Handy indentation function to line it all up.
 indent() {
@@ -10,18 +11,13 @@ indent() {
 
 # Ensure that we are running this from the root of the project. If the script is
 # run from anywhere else, files can end up in the wrong spot.
-echo "---> Running setup checks"
+echo "---> Running test suite setup checks"
 if [[ ! -f "Gemfile" ]] ; then
   echo "     Test suite is not being run from the project root."
   echo "     Please change to the root and re-run the test suite."
   exit 1
 fi
 echo "---> Pre-checks all passed"
-
-# Bundle it all up.
-echo "---> Fetching all dependencies"
-bundle install --quiet "$@"
-echo "---> Bundling completed"
 
 # Run the test suite.
 echo "---> Starting test suite"

@@ -8,7 +8,10 @@ indent() {
   sed "s/^/     /"
 }
 
+# Bundle it all up.
+echo "---> Fetching all dependencies"
 bundle install --quiet "$@"
+echo "---> Bundling completed"
 
 # Create the .env containing all environment variables if not already done.
 echo "---> Checking for .env file"
