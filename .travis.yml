@@ -5,5 +5,7 @@ env:
   - "TEST_DB=rehttp_test TEST_DB_USER=postgres"
 before_script:
   - "psql -c 'create database rehttp_test;' -U postgres"
-script: "bundle exec rake db:schema:load db:test:prepare spec"
+script:
+  - "bundle exec rake db:schema:load db:test:prepare"
+  - "bundle exec rspec spec"
 before_install: "script/cibuild"
