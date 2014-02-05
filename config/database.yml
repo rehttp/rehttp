@@ -8,9 +8,8 @@ development:
 
 test:
   <<: *defaults
-  host: localhost
-  database: <%= ENV['TEST_DB'] %>
-  username: <%= ENV['TEST_DB_USER'] %>
+  database: rehttp_test
+  username: postgres
 
 production:
   adapter: postgresql
