@@ -1,7 +1,14 @@
 language: ruby
 rvm:
   - "2.1.0"
-env: "TEST_DB=rehttp_test TEST_DB_USER=postgres"
-before_script: "psql -c 'create database rehttp_test;' -U postgres"
-script: "bundle exec rake db:migrate db:test:prepare spec"
-before_install: "script/cibuild"
+env:
+  - TEST_DB=rehttp_test
+  - TEST_DB_USER=postgres
+before_script:
+  - psql -c 'create database rehttp_test;' -U postgres
+script:
+  - RAILS_ENV=test bundle exec rake db:migrate --trace
+  - bundle exec rake db:test:prepare
+  - bundle exec rspec spec/
+before_install:
+  - script/cibuild
