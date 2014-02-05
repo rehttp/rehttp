@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 set -e
-echo
 
 # Handy indentation function to line it all up.
 indent() {
