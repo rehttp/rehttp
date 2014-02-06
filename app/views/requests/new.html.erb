@@ -5,7 +5,7 @@
     <!-- URL -->
     <div class="form-group">
       <div class="col-md-2">
-        <%= select_tag 'request_type', options_for_select(%w(GET)), :class => 'request-type form-control' %>
+        <%= select_tag 'request_type', options_for_select(%w(GET POST PUT DELETE OPTIONS HEAD PATCH)), :class => 'request-type form-control' %>
       </div>
       <div class="col-md-10">
         <%= url_field_tag(:url, '', { :class => 'request-url form-control', :placeholder => 'Enter your URL...' }) %>
@@ -30,7 +30,7 @@
     </div>
 
     <!-- Parameters -->
-    <div class="form-group">
+    <div class="form-group" id="request-parameter-group">
       <div class="col-md-2">
         <%= label_tag 'Parameters', nil, class: 'form-label' %>
       </div>
@@ -59,6 +59,23 @@
           <%= text_area_tag 'request_headers', nil, { class: 'request-headers form-control', placeholder: 'X-Custom-Header: Value' } %>
           <p class="help-block">Insert one header name to header value per line as shown above.</p>
           <a href="" id="js-hide-request-headers-container">Remove headers</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Payload -->
+    <div class="form-group" id="request-payload-group">
+      <div class="col-md-2">
+        <%= label_tag 'Payload', nil, class: 'form-label' %>
+      </div>
+      <div class="col-md-10">
+        <button type="button" class="btn btn-sm btn-default" id="js-request-add-payload">
+          <span class="glyphicon glyphicon-plus"></span> Add payload body
+        </button>
+        <div id="js-request-payload-container">
+          <%= text_area_tag 'request_payload', nil, { class: 'request-payload form-control', placeholder: '{"body" => "example string"}' } %>
+          <p class="help-block">The payload allows you to send through raw data (such as a JSON object) with your request.</p>
+          <a href="" id="js-hide-request-payload-container">Remove payload</a>
         </div>
       </div>
     </div>

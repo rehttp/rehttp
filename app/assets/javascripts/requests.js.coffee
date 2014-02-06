@@ -44,3 +44,20 @@ $('#js-hide-request-headers-container').click (e) ->
   $('#request_headers').val('')
   $('#js-request-add-headers').show()
   $('#js-request-headers-container').hide()
+
+# Payload container and interaction.
+$('#request_type').change ->
+  if $('#request_type').val() == 'POST' || $('#request_type').val() == 'PUT' || $('#request_type').val() == 'PATCH'
+    $('#request-payload-group').show()
+  else
+    $('#request-payload-group').hide()
+
+$('#js-request-add-payload').click (e) ->
+  $('#js-request-add-payload').hide()
+  $('#js-request-payload-container').show()
+
+$('#js-hide-request-payload-container').click (e) ->
+  e.preventDefault()
+  $('#request_payload').val('')
+  $('#js-request-add-payload').show()
+  $('#js-request-payload-container').hide()

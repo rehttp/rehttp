@@ -24,11 +24,13 @@
       <% end %>
     </ul>
 
+    <% unless @request_type == 'HEAD' %>
     <h4>Body</h4>
     <div class="row">
       <div class="col-md-12">
-        <pre><%= h @response_data['body'] %></pre>
+        <pre class="prettyprint"><%= h @response_data['body'] %></pre>
       </div>
     </div>
+    <% end %>
   </div>
 </div>

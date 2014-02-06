@@ -23,7 +23,9 @@ ul {
 }
 
 #js-request-parameters-container,
-#js-request-headers-container {
+#js-request-headers-container,
+#js-request-payload-container,
+#request-payload-group {
   display: none;
 
   textarea {
