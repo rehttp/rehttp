@@ -34,6 +34,7 @@ class RequestsController < ApplicationController
       request_url        = params[:url]
       request_parameters = params[:request_parameters]
       request_headers    = params[:request_headers]
+      request_payload    = params[:request_payload]
       username           = params[:username]
       password           = params[:password]
       private_request    = params[:private_request]
@@ -56,13 +57,21 @@ class RequestsController < ApplicationController
         request.headers[header_components[0]] = header_components[1]
       end
 
+      # Ensure the parameters are available before trying to create a new hash
+      # from them.
+      if request_parameters.present?
+        request_params = Hash[request_parameters.split("\r\n").map {|params| params.split('=') }]
+      else
+        request_params = {}
+      end
+
       case request_type
       when 'GET'
-        response = request.get build_query_string(request_url, request_parameters)
+        response = request.get(request_url, request_params)
       when 'POST'
-        response = request.post(request_url, request_data)
+        response = request.post(request_url, request_payload)
       when 'PUT'
-        response = request.put(request_url, request_data)
+        response = request.put(request_url, request_params)
       when 'DELETE'
         response = request.delete request_url
       when 'OPTIONS'
