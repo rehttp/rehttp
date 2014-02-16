@@ -28,7 +28,11 @@
     <h4>Body</h4>
     <div class="row">
       <div class="col-md-12">
-        <pre class="prettyprint"><%= h @response_data['body'] %></pre>
+        <% if @response_data['headers']['content-type'].include? 'json' %>
+          <pre><%= JSON.pretty_generate(JSON.parse(@response_data['body'])) %></pre>
+        <% else %>
+          <pre><%= h @response_data['body'] %></pre>
+        <% end %>
       </div>
     </div>
     <% end %>
