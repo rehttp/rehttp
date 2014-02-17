@@ -4,6 +4,8 @@ $('#request').bind 'ajax:success', (evt, data, status) ->
     type: 'GET',
     success: (html) ->
       $('#response').html(html)
+      $('pre code').each (i, e) ->
+        hljs.highlightBlock(e)
     error: (a, b, c) ->
       # Log this error
   }

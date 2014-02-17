@@ -29,9 +29,9 @@
     <div class="row">
       <div class="col-md-12">
         <% if @response_data['headers']['content-type'].include? 'json' %>
-          <pre><%= JSON.pretty_generate(JSON.parse(@response_data['body'])) %></pre>
+          <pre><code><%= JSON.pretty_generate(JSON.parse(@response_data['body'])) %><code></pre>
         <% else %>
-          <pre><%= h @response_data['body'] %></pre>
+          <pre><code><%= h @response_data['body'] %></code></pre>
         <% end %>
       </div>
     </div>
