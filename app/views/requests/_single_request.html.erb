@@ -1,8 +1,8 @@
-<hr>
+<%= render 'requests/user_actions/menu' %>
 
 <div class="row">
   <div class="col-md-12">
-    <h2><%= @request_type %> <small><%= @url %></small></h2>
+    <h2><%= @rid.request_type %> <small><%= @rid.url %></small></h2>
 
     <h4>Request Headers</h4>
     <ul>
@@ -28,7 +28,7 @@
     <h4>Body</h4>
     <div class="row">
       <div class="col-md-12">
-        <% if @response_data['headers']['content-type'].include? 'json' %>
+        <% if is_json_response? %>
           <pre><code><%= JSON.pretty_generate(JSON.parse(@response_data['body'])) %><code></pre>
         <% else %>
           <pre><code><%= h @response_data['body'] %></code></pre>

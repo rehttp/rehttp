@@ -1,6 +1,7 @@
 Rehttp::Application.routes.draw do
   get  'r/', :to => 'requests#index'
   get  'r/:rid', :to => 'requests#show', :as => 'show_request'
+  get  'r/:rid/raw', :to => 'requests#show_raw', :as => 'show_raw_request'
 
   get  'requests/recent', :to => 'requests#get_recent', :as => 'recent_requests'
   get  'requests/new', :to => 'requests#new', :as => 'new_request'

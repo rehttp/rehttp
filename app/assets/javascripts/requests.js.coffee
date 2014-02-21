@@ -1,11 +1,19 @@
+# Apply syntax highlighting to code blocks.
+#
+# Uses the highlight.js library to find all the code blocks and apply pretty
+# syntax highlighting to it.
+applySyntaxHighlighting = ->
+  $('pre code').each (i, e) ->
+    hljs.highlightBlock(e)
+
+# Create the AJAX request to fetch the request data.
 $('#request').bind 'ajax:success', (evt, data, status) ->
   $.ajax {
-    url: '/r/' + data
+    url: '/r/' + data + '/raw'
     type: 'GET',
     success: (html) ->
       $('#response').html(html)
-      $('pre code').each (i, e) ->
-        hljs.highlightBlock(e)
+      applySyntaxHighlighting()
     error: (a, b, c) ->
       # Log this error
   }
@@ -49,6 +57,7 @@ $('#js-hide-request-headers-container').click (e) ->
 
 # Payload container and interaction.
 $('#request_type').change ->
+  # On POST, PUT or PATCH requests, make the body payload available.
   if $('#request_type').val() == 'POST' || $('#request_type').val() == 'PUT' || $('#request_type').val() == 'PATCH'
     $('#request-payload-group').show()
   else
@@ -63,3 +72,9 @@ $('#js-hide-request-payload-container').click (e) ->
   $('#request_payload').val('')
   $('#js-request-add-payload').show()
   $('#js-request-payload-container').hide()
+
+$('#response').on 'click', '#js-share-link', (e) ->
+  e.preventDefault()
+  $('body').append($('#js-share-link').data('raw-rid'))
+
+applySyntaxHighlighting()

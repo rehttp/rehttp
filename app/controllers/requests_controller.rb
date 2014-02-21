@@ -5,13 +5,22 @@ class RequestsController < ApplicationController
 
   # Show an individual request.
   def show
-    @rid = Requests.find_by(rid: params[:rid])
-    @request_data = JSON.parse @rid.request_data
-    @response_data = JSON.parse @rid.response_data
-    @url = @rid.url
-    @request_type = @rid.request_type
+    find_request(params[:rid])
+    respond_to do |format|
+      format.html { render 'shared_request' }
+      # This will be used for the embedding of a request.
+      # format.js   { render 'single_request' }
+    end
+  end
 
-    render partial: 'single_request'
+  # Handle showing the raw request/response output data.
+  def show_raw
+    find_request(params[:rid])
+    respond_to do |format|
+      format.html { render :partial => 'single_request' }
+      # This will be used for the embedding of a request.
+      # format.js   { render 'single_request' }
+    end
   end
 
   def new
@@ -21,7 +30,14 @@ class RequestsController < ApplicationController
   # Create a new request.
   def create
     @request = Requests.new(request_params)
-    @request.save
+
+    begin
+      @request.save
+    rescue Exception => e
+      "[#{Time.now}] Failed to save new request for #{@request.rid}.\n" +
+      "#{e.backtrace}"
+    end
+
     render :layout => false
   end
 
@@ -29,7 +45,7 @@ class RequestsController < ApplicationController
     # Build the request parameters and correct structure for inserting into the
     # database.
     def request_params
-      rid                = SecureRandom.uuid
+      rid                = SecureRandom.uuid[0, 8]
       request_type       = params[:request_type]
       request_url        = params[:url]
       request_parameters = params[:request_parameters]
@@ -97,5 +113,15 @@ class RequestsController < ApplicationController
           :status  => response.status,
         }.to_json
       }
+    end
+
+    # Find a request based on request ID.
+    #
+    # Returns the request object as well as nicely formatted request and
+    # response data.
+    def find_request(rid)
+      @rid = Requests.find_by(rid: rid)
+      @request_data = JSON.parse @rid.request_data
+      @response_data = JSON.parse @rid.response_data
     end
 end
