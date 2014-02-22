@@ -19,7 +19,7 @@ module RequestsHelper
   # Using the content-type header, check if JSON is defined within it.
   #
   # Returns boolean.
-  def is_json_response?
+  def json_response?
     if @response_data['headers']['content-type'].include? 'json'
       return true
     else
