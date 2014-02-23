@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-md-12" id="js-user-actions-div">
+    <a href="#" data-toggle="modal" data-target="#js-share-link">Share this request</a>
+  </div>
+</div>
+
+<div class="modal fade" id="js-share-link" tabindex="-1" role="dialog" aria-labelledby="js-share-link-modal " aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <p>Your link to this request is: </p>
+        <pre class="share-url">http://www.rehttp.me/r/<%= @rid.rid %></pre>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-info">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

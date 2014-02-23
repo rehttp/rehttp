@@ -13,4 +13,17 @@ module RequestsHelper
   def format_http_header(word)
     word.gsub(/\w+|-/, &:capitalize)
   end
+
+  # Determine if the response is JSON.
+  #
+  # Using the content-type header, check if JSON is defined within it.
+  #
+  # Returns boolean.
+  def json_response?
+    if @response_data['headers']['content-type'].include? 'json'
+      return true
+    else
+      return false
+    end
+  end
 end

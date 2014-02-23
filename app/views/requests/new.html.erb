@@ -1,92 +1,90 @@
-<div class="container">
-  <div id="request">
-    <%= form_for @request, :url => create_request_path, html: { :class => 'form-horizontal' }, :remote => true do %>
+<div id="request">
+  <%= form_for @request, :url => create_request_path, html: { :class => 'form-horizontal' }, :remote => true do %>
 
-    <!-- URL -->
-    <div class="form-group">
-      <div class="col-md-2">
-        <%= select_tag 'request_type', options_for_select(%w(GET POST PUT DELETE OPTIONS HEAD PATCH)), :class => 'request-type form-control' %>
-      </div>
-      <div class="col-md-10">
-        <%= url_field_tag(:url, '', { :class => 'request-url form-control', :placeholder => 'Enter your URL...' }) %>
+  <!-- URL -->
+  <div class="form-group">
+    <div class="col-md-2">
+      <%= select_tag 'request_type', options_for_select(%w(GET POST PUT DELETE OPTIONS HEAD PATCH)), :class => 'request-type form-control' %>
+    </div>
+    <div class="col-md-10">
+      <%= url_field_tag(:url, '', { :class => 'request-url form-control', :placeholder => 'Enter your URL...' }) %>
+    </div>
+  </div>
+
+  <!-- Authentication -->
+  <div class="form-group">
+    <div class="col-md-2">
+      <%= label_tag 'Authentication', nil, class: 'form-label' %>
+    </div>
+    <div class="col-md-10">
+      <button type="button" class="btn btn-sm btn-default" id="js-add-request-basic-auth">
+        <span class="glyphicon glyphicon-plus"></span> Add basic authentication
+      </button>
+      <div id="request-basic-auth">
+        <%= text_field_tag 'username', nil, class: 'auth_username form-control', :placeholder => 'Username' %>
+        <%= password_field_tag 'password', nil, class: 'auth_password form-control', :placeholder => 'Password' %>
+        <a href="" id="js-hide-request-basic-auth">Remove authentication</a>
       </div>
     </div>
+  </div>
 
-    <!-- Authentication -->
-    <div class="form-group">
-      <div class="col-md-2">
-        <%= label_tag 'Authentication', nil, class: 'form-label' %>
-      </div>
-      <div class="col-md-10">
-        <button type="button" class="btn btn-sm btn-default" id="js-add-request-basic-auth">
-          <span class="glyphicon glyphicon-plus"></span> Add basic authentication
-        </button>
-        <div id="request-basic-auth">
-          <%= text_field_tag 'username', nil, class: 'auth_username form-control', :placeholder => 'Username' %>
-          <%= password_field_tag 'password', nil, class: 'auth_password form-control', :placeholder => 'Password' %>
-          <a href="" id="js-hide-request-basic-auth">Remove authentication</a>
-        </div>
+  <!-- Parameters -->
+  <div class="form-group" id="request-parameter-group">
+    <div class="col-md-2">
+      <%= label_tag 'Parameters', nil, class: 'form-label' %>
+    </div>
+    <div class="col-md-10">
+      <button type="button" class="btn btn-sm btn-default" id="js-add-request-parameter">
+        <span class="glyphicon glyphicon-plus"></span> Add parameters
+      </button>
+      <div id="js-request-parameters-container">
+        <%= text_area_tag 'request_parameters', nil, { class: 'request-parameters form-control', placeholder: 'key=value' } %>
+        <p class="help-block">Insert one key to value pair per line as shown above.</p>
+        <a href="" id="js-hide-request-parameters-container">Remove custom parameters</a>
       </div>
     </div>
+  </div>
 
-    <!-- Parameters -->
-    <div class="form-group" id="request-parameter-group">
-      <div class="col-md-2">
-        <%= label_tag 'Parameters', nil, class: 'form-label' %>
-      </div>
-      <div class="col-md-10">
-        <button type="button" class="btn btn-sm btn-default" id="js-add-request-parameter">
-          <span class="glyphicon glyphicon-plus"></span> Add parameters
-        </button>
-        <div id="js-request-parameters-container">
-          <%= text_area_tag 'request_parameters', nil, { class: 'request-parameters form-control', placeholder: 'key=value' } %>
-          <p class="help-block">Insert one key to value pair per line as shown above.</p>
-          <a href="" id="js-hide-request-parameters-container">Remove custom parameters</a>
-        </div>
+  <!-- HTTP headers -->
+  <div class="form-group">
+    <div class="col-md-2">
+      <%= label_tag 'Custom headers', nil, class: 'form-label' %>
+    </div>
+    <div class="col-md-10">
+      <button type="button" class="btn btn-sm btn-default" id="js-request-add-headers">
+        <span class="glyphicon glyphicon-plus"></span> Add HTTP headers
+      </button>
+      <div id="js-request-headers-container">
+        <%= text_area_tag 'request_headers', nil, { class: 'request-headers form-control', placeholder: 'X-Custom-Header: Value' } %>
+        <p class="help-block">Insert one header name to header value per line as shown above.</p>
+        <a href="" id="js-hide-request-headers-container">Remove headers</a>
       </div>
     </div>
+  </div>
 
-    <!-- HTTP headers -->
-    <div class="form-group">
-      <div class="col-md-2">
-        <%= label_tag 'Custom headers', nil, class: 'form-label' %>
-      </div>
-      <div class="col-md-10">
-        <button type="button" class="btn btn-sm btn-default" id="js-request-add-headers">
-          <span class="glyphicon glyphicon-plus"></span> Add HTTP headers
-        </button>
-        <div id="js-request-headers-container">
-          <%= text_area_tag 'request_headers', nil, { class: 'request-headers form-control', placeholder: 'X-Custom-Header: Value' } %>
-          <p class="help-block">Insert one header name to header value per line as shown above.</p>
-          <a href="" id="js-hide-request-headers-container">Remove headers</a>
-        </div>
+  <!-- Payload -->
+  <div class="form-group" id="request-payload-group">
+    <div class="col-md-2">
+      <%= label_tag 'Payload', nil, class: 'form-label' %>
+    </div>
+    <div class="col-md-10">
+      <button type="button" class="btn btn-sm btn-default" id="js-request-add-payload">
+        <span class="glyphicon glyphicon-plus"></span> Add payload body
+      </button>
+      <div id="js-request-payload-container">
+        <%= text_area_tag 'request_payload', nil, { class: 'request-payload form-control', placeholder: '{"body" => "example string"}' } %>
+        <p class="help-block">The payload allows you to send through raw data (such as a JSON object) with your request.</p>
+        <a href="" id="js-hide-request-payload-container">Remove payload</a>
       </div>
     </div>
+  </div>
 
-    <!-- Payload -->
-    <div class="form-group" id="request-payload-group">
-      <div class="col-md-2">
-        <%= label_tag 'Payload', nil, class: 'form-label' %>
-      </div>
-      <div class="col-md-10">
-        <button type="button" class="btn btn-sm btn-default" id="js-request-add-payload">
-          <span class="glyphicon glyphicon-plus"></span> Add payload body
-        </button>
-        <div id="js-request-payload-container">
-          <%= text_area_tag 'request_payload', nil, { class: 'request-payload form-control', placeholder: '{"body" => "example string"}' } %>
-          <p class="help-block">The payload allows you to send through raw data (such as a JSON object) with your request.</p>
-          <a href="" id="js-hide-request-payload-container">Remove payload</a>
-        </div>
-      </div>
-    </div>
+  <div class="form-group request-submission col-md-12">
+    <!-- <%= check_box_tag(:private_request, 1) %>
+    <%= label_tag(:private_request, 'Private request?') %> -->
+    <%= submit_tag "Send", :id => 'send-request', :class => 'btn btn-success' %>
+  </div>
+  <% end %>
+</div> <!-- /#request -->
 
-    <div class="form-group request-submission col-md-12">
-      <!-- <%= check_box_tag(:private_request, 1) %>
-      <%= label_tag(:private_request, 'Private request?') %> -->
-      <%= submit_tag "Send", :id => 'send-request', :class => 'btn btn-success' %>
-    </div>
-    <% end %>
-  </div> <!-- /#request -->
-
-  <div id="response"></div> <!-- /#response -->
-</div>
+<div id="response"></div> <!-- /#response -->
