@@ -1,8 +1,6 @@
 <div class="row">
   <div class="col-md-12" id="js-user-actions-div">
-    <button class="btn btn-info" data-toggle="modal" data-target="#js-share-link">
-      Share
-    </button>
+    <a href="#" data-toggle="modal" data-target="#js-share-link">Share this request</a>
   </div>
 </div>
 
@@ -11,9 +9,7 @@
     <div class="modal-content">
       <div class="modal-body">
         <p>Your link to this request is: </p>
-        <pre>http://www.rehttp.me/r/<%= @rid.rid %></pre>
-        <p>To embed this request, insert the following snippet: </p>
-        <pre>&lt;script src=&quot;http://www.rehttp.me/r/<%= @rid.rid %>.js&quot;&gt; &lt;/script&gt;</pre>
+        <pre class="share-url">http://www.rehttp.me/r/<%= @rid.rid %></pre>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
