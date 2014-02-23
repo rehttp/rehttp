@@ -23,6 +23,11 @@ class RequestsController < ApplicationController
     end
   end
 
+  def show_embed
+    find_request(params[:rid])
+    render 'embed_request'
+  end
+
   def new
     @request = Requests.new
   end
