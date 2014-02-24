@@ -8,24 +8,14 @@ class RequestsController < ApplicationController
     find_request(params[:rid])
     respond_to do |format|
       format.html { render 'shared_request' }
-      # This will be used for the embedding of a request.
-      # format.js   { render 'single_request' }
+      format.js   { render :partial => 'requests/embed/embed' }
     end
   end
 
   # Handle showing the raw request/response output data.
   def show_raw
     find_request(params[:rid])
-    respond_to do |format|
-      format.html { render :partial => 'single_request' }
-      # This will be used for the embedding of a request.
-      # format.js   { render 'single_request' }
-    end
-  end
-
-  def show_embed
-    find_request(params[:rid])
-    render 'embed_request'
+    render :partial => 'single_request'
   end
 
   def new
