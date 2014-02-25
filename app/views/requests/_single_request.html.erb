@@ -19,7 +19,7 @@
     <ul>
       <% @response_data['headers'].each do |header_name, header_value| %>
         <li>
-          <strong><%= format_http_header header_name %>: </strong><%= header_value %>
+          <strong><%= format_http_header(header_name) %>: </strong><%= header_value %>
         </li>
       <% end %>
     </ul>
