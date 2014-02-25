@@ -9,11 +9,12 @@
     <div class="modal-content">
       <div class="modal-body">
         <p>Your link to this request is: </p>
-        <pre class="share-url">http://www.rehttp.me/r/<%= @rid.rid %></pre>
+        <pre class="share-url"><%= site_url %>/r/<%= @rid.rid %></pre>
+        <p>To embed this request, paste the following into your page: </p>
+        <pre class="share-url">&lt;script src=&quot;<%= site_url %>/r/<%= @rid.rid %>.js&quot;&gt;&lt;/script&gt;</pre>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-info">Save changes</button>
       </div>
     </div>
   </div>

@@ -1,4 +1,18 @@
 module ApplicationHelper
+  # Define a correct base URL.
+  #
+  # To ease the transition between environments, this helper detects if it is on
+  # a developent box and adjusts the URL's accordingly.
+  #
+  # Returns a string of the domain.
+  def site_url
+    if ENV['RACK_ENV'] == 'development'
+      request.protocol + request.host + ':' + request.port.to_s
+    else
+      request.protocol + 'rehttp.com'
+    end
+  end
+
   # Build the correct site title.
   #
   # This helps keep a consistent look across all the site by setting a standard
