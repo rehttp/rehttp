@@ -9,7 +9,7 @@ module ApplicationHelper
     if ENV['RACK_ENV'] == 'development'
       request.protocol + request.host + ':' + request.port.to_s
     else
-      request.protocol + 'rehttp.com'
+      request.protocol + 'rehttp.me'
     end
   end
 
