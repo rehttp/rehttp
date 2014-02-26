@@ -8,12 +8,14 @@ indent() {
   sed "s/^/     /"
 }
 
+echo "---> Bundling..."
 bundle install --quiet "$@"
 
 # Create the .env containing all environment variables if not already done.
 echo "---> Checking for .env file"
 if [[ ! -f ".env" ]] ; then
   touch .env
-  echo "---> Environment file has been created"
+  echo "Environment file not found so one has been created" | indent
+else
+  echo "Environment file found" | indent
 fi
-echo "---> Environment file found"
