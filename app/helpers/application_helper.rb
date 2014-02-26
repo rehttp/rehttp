@@ -18,7 +18,8 @@ module ApplicationHelper
   # This helps keep a consistent look across all the site by setting a standard
   # format for the title elements.
   #
-  # Example:
+  # Examples
+  #
   #   No page name defined  => ReHTTP
   #   Page name defined     => Page name · ReHTTP
   #   Sub page name defined => Sub page · Parent · ReHTTP
@@ -34,5 +35,18 @@ module ApplicationHelper
     else
       return site_name
     end
+  end
+
+  # Construct the asset path with a digest attached.
+  #
+  # Examples
+  #
+  #   path_with_digest('application', 'css')
+  #   # => application-a6cebf5fe429bb0eda3f1b713c05499b.css
+  #
+  # Returns a string of the file with the digest hash.
+  def path_with_digest(filename, file_extension)
+    full_filepath = "#{filename}.#{file_extension}"
+    "#{filename}-#{Rails.application.assets.find_asset(full_filepath).digest}.#{file_extension}"
   end
 end

@@ -1,14 +1,24 @@
 require 'securerandom'
 
 class RequestsController < ApplicationController
+  include ApplicationHelper
   include RequestsHelper
 
   # Show an individual request.
   def show
+    css_path = path_with_digest('application', 'css')
+    js_path = path_with_digest('application', 'js')
+
     find_request(params[:rid])
     respond_to do |format|
       format.html { render 'shared_request' }
-      format.js   { render :partial => 'requests/embed/embed' }
+      format.js   {
+        render :partial => 'requests/embed/embed',
+        :locals => {
+          :css_path => "#{site_url}/assets/#{css_path}",
+          :js_path => "#{site_url}/assets/#{js_path}"
+        }
+      }
     end
   end
 
