@@ -3,11 +3,7 @@ module ApplicationHelper
   #
   # Returns boolean.
   def development_environment?
-    if Rails.env == 'development'
-      true
-    else
-      false
-    end
+    Rails.env.development?
   end
   # Define a correct base URL.
   #
