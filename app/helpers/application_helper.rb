@@ -1,4 +1,10 @@
 module ApplicationHelper
+  # Run environment check for development environment.
+  #
+  # Returns boolean.
+  def development_environment?
+    Rails.env.development?
+  end
   # Define a correct base URL.
   #
   # To ease the transition between environments, this helper detects if it is on

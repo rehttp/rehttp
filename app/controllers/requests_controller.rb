@@ -6,8 +6,8 @@ class RequestsController < ApplicationController
 
   # Show an individual request.
   def show
-    css_path = path_with_digest('application', 'css')
-    js_path = path_with_digest('application', 'js')
+    css_path = (development_environment?) ? 'application.css' : path_with_digest('application', 'css')
+    js_path = (development_environment?) ? 'application.js' : path_with_digest('application', 'js')
 
     find_request(params[:rid])
     respond_to do |format|
