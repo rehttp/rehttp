@@ -3,7 +3,7 @@ module ApplicationHelper
   #
   # Returns boolean.
   def development_environment?
-    if ENV['RACK_ENV'] == 'development'
+    if Rails.env == 'development'
       true
     else
       false
