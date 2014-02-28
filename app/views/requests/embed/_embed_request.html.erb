@@ -28,9 +28,11 @@
       <div id="embed-response-headers">
         <ul>
         <% @response_data['headers'].each do |header_name, header_value| %>
-          <li>
-            <strong><%= format_http_header header_name %>: </strong><%= header_value %>
-          </li>
+          <% if params[:show_headers].downcase.include?(header_name) || params[:show_headers] == 'all' %>
+            <li>
+              <strong><%= format_http_header header_name %>: </strong><%= header_value %>
+            </li>
+          <% end %>
         <% end %>
         </ul>
       </div>
