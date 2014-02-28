@@ -66,7 +66,7 @@ params to suit your needs.
 
 ![no-embed-options](screenshots/embed-mix-1.png)
 
-**URL with HTTP headers** `<script src="http://rehttp.me/r/a93d2a2a.js?show_url=true&show_headers=true"></script>`
+**URL with HTTP headers** `<script src="http://rehttp.me/r/a93d2a2a.js?show_url=true&show_headers=all"></script>`
 
 ![no-embed-options](screenshots/embed-mix-2.png)
 
