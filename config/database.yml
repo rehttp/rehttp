@@ -5,6 +5,7 @@ defaults: &defaults
 development:
   <<: *defaults
   database: <%= ENV['DEVELOPMENT_DB'] %>
+  username: <%= ENV['DEVELOPMENT_DB_USER'] %>
 
 test:
   <<: *defaults
