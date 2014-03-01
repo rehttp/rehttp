@@ -23,16 +23,18 @@ gem 'jquery-rails'
 gem 'faraday'
 
 group :development do
-  gem 'rspec-rails'
-end
-
-# Test dependencies.
-group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'dotenv-rails'
   gem 'pry'
   gem 'pry-rails'
+end
+
+group :test do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'guard-rspec'
 end
 
 group :production do
