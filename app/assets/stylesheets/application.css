@@ -3,4 +3,6 @@
  *= require normalize
  *= require application_defaults
  *= require requests
+ *= require syntax_highlight_theme
+ *= require embed
  */

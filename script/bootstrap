@@ -7,8 +7,7 @@ indent() {
   sed "s/^/     /"
 }
 
-# Bundle it all up.
-echo "---> Fetching all dependencies"
+echo "---> Bundling..."
 bundle install --quiet "$@"
 echo "---> Bundling completed"
 
@@ -16,6 +15,7 @@ echo "---> Bundling completed"
 echo "---> Checking for .env file"
 if [[ ! -f ".env" ]] ; then
   touch .env
-  echo "---> Environment file has been created"
+  echo "Environment file not found so one has been created" | indent
+else
+  echo "Environment file found" | indent
 fi
-echo "---> Environment file found"

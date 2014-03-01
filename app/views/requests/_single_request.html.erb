@@ -1,8 +1,8 @@
-<hr>
+<%= render 'requests/user_actions/menu' %>
 
 <div class="row">
   <div class="col-md-12">
-    <h2><%= @request_type %> <small><%= @url %></small></h2>
+    <h2><%= @rid.request_type %> <small><%= @rid.url %></small></h2>
 
     <h4>Request Headers</h4>
     <ul>
@@ -19,16 +19,22 @@
     <ul>
       <% @response_data['headers'].each do |header_name, header_value| %>
         <li>
-          <strong><%= format_http_header header_name %>: </strong><%= header_value %>
+          <strong><%= format_http_header(header_name) %>: </strong><%= header_value %>
         </li>
       <% end %>
     </ul>
 
+    <% unless @request_type == 'HEAD' %>
     <h4>Body</h4>
     <div class="row">
       <div class="col-md-12">
-        <pre><%= h @response_data['body'] %></pre>
+        <% if json_response? %>
+          <pre><code><%= JSON.pretty_generate(JSON.parse(@response_data['body'])) %></code></pre>
+        <% else %>
+          <pre><code><%= h @response_data['body'] %></code></pre>
+        <% end %>
       </div>
     </div>
+    <% end %>
   </div>
 </div>

@@ -1,5 +1,3 @@
-@import 'application_defaults.css.scss';
-
 ul {
   list-style: none;
   padding: 0;
@@ -10,6 +8,30 @@ ul {
   padding-top: 20px;
 }
 
-.auth_username {
-  margin-bottom: 10px;
+#request-basic-auth {
+  display: none;
+
+  .auth_username {
+    margin-bottom: 10px;
+  }
+
+  .auth_password {
+    margin-bottom: 5px;
+  }
+}
+
+#js-request-parameters-container,
+#js-request-headers-container,
+#js-request-payload-container,
+#request-payload-group {
+  display: none;
+
+  textarea {
+    height: 100px;
+    resize: none;
+  }
+}
+
+.share-url {
+  padding: 7px;
 }

@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-md-12" id="js-user-actions-div">
+    <a href="#" data-toggle="modal" data-target="#js-share-link">Share this request</a>
+  </div>
+</div>
+
+<div class="modal fade" id="js-share-link" tabindex="-1" role="dialog" aria-labelledby="js-share-link-modal " aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <p>Your link to this request is: </p>
+        <pre class="share-url"><%= site_url %>/r/<%= @rid.rid %></pre>
+        <p>To embed this request, paste the following into your page: </p>
+        <pre class="share-url">&lt;script src=&quot;<%= site_url %>/r/<%= @rid.rid %>.js&quot;&gt;&lt;/script&gt;</pre>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -26,3 +26,17 @@ h3 {
   margin: 0;
   font-size: 18px;
 }
+
+pre {
+  padding: 3px;
+  margin: 0;
+}
+
+pre,
+code,
+code span {
+  font-size: 12px;
+  font-family: $mono-font-stack;
+  background: transparent;
+  line-height: 1.4;
+}

@@ -1,0 +1,54 @@
+<div id="embed-panel" class="panel panel-default">
+  <% if params[:show_url] %>
+    <h2><%= @rid.request_type %> <small><%= @rid.url %></small></h2>
+  <% end %>
+
+  <% if params[:show_navigation] %>
+  <ul class="nav nav-tabs">
+    <li><a href="#" id="js-show-embed-request">Request</a></li>
+    <li><a href="#" id="js-show-embed-response">Response</a></li>
+  </ul>
+  <% end %>
+
+  <div class="panel-body">
+    <div id="embed-request-container">
+      <!-- Request -->
+      <div id="embed-request-headers">
+        <ul>
+          <% @request_data['headers'].each do |header_name, header_value| %>
+            <li>
+              <strong><%= header_name %>: </strong><%= header_value %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+
+      <!-- Response -->
+      <% if params[:show_headers] %>
+      <div id="embed-response-headers">
+        <ul>
+        <% @response_data['headers'].each do |header_name, header_value| %>
+          <% if params[:show_headers].downcase.include?(header_name) || params[:show_headers] == 'all' %>
+            <li>
+              <strong><%= format_http_header header_name %>: </strong><%= header_value %>
+            </li>
+          <% end %>
+        <% end %>
+        </ul>
+      </div>
+      <% end %>
+
+      <div id="embed-response-body">
+        <div class="row">
+          <div class="col-md-12">
+            <% if json_response? %>
+              <pre><code><%= JSON.pretty_generate(JSON.parse(@response_data['body'])) %></code></pre>
+            <% else %>
+              <pre><code><%= h @response_data['body'] %></pre></code>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

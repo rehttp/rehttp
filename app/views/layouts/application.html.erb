@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <%= stylesheet_link_tag "application" %>
-  <title>ReHTTP</title>
+  <%= stylesheet_link_tag 'application' %>
+  <title><%= title %></title>
   <%= csrf_meta_tags %>
 </head>
-  <body>
+<body>
 
+<div class="container">
   <%= yield %>
+</div>
 
-  <%= javascript_include_tag "application" %>
-  </body>
+<%= javascript_include_tag 'application' %>
+</body>
 </html>

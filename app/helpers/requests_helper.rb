@@ -7,10 +7,23 @@ module RequestsHelper
   #
   #   cache-control    => Cache-Control
   #   x-frame-options  => X-Frame-Options
-  #   x-xss-protection => X-Xss-Protection.
+  #   x-xss-protection => X-Xss-Protection
   #
   # Returns a formatted string.
   def format_http_header(word)
     word.gsub(/\w+|-/, &:capitalize)
+  end
+
+  # Determine if the response is JSON.
+  #
+  # Using the content-type header, check if JSON is defined within it.
+  #
+  # Returns boolean.
+  def json_response?
+    if @response_data['headers']['content-type'].include? 'json'
+      return true
+    else
+      return false
+    end
   end
 end
