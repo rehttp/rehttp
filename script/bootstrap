@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 set -e
-echo
 
 # Handy indentation function to line it all up.
 indent() {
@@ -10,6 +9,7 @@ indent() {
 
 echo "---> Bundling..."
 bundle install --quiet "$@"
+echo "---> Bundling completed"
 
 # Create the .env containing all environment variables if not already done.
 echo "---> Checking for .env file"

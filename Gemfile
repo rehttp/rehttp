@@ -40,5 +40,5 @@ group :production do
   gem 'newrelic_rpm'
 
   # Bug monitoring.
-  gem 'bugsnag'
+  # gem 'bugsnag'
 end
