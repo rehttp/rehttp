@@ -36,6 +36,9 @@ group :development, :test do
 end
 
 group :production do
-  # Monitoring
+  # Monitoring.
   gem 'newrelic_rpm'
+
+  # Bug monitoring.
+  gem 'bugsnag'
 end
