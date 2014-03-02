@@ -1,0 +1,40 @@
+/* Navigation */
+.navbar {
+  height: 100px;
+}
+
+.navbar-brand {
+  font-size: 30px;
+  font-family: 'Droid Sans', sans-serif;
+  font-weight: bold;
+}
+
+.navbar-text {
+  text-transform: uppercase;
+  font-size: 12px;
+
+  a {
+    color: #537080;
+    text-decoration: none;
+    margin-left: 30px;
+
+    &:hover {
+      color: #e1455e;
+      border-bottom: 2px solid #e1455e;
+    }
+  }
+}
+
+.navbar-brand,
+.navbar-text {
+  line-height: 70px;
+  font-weight: bold;
+}
+
+.navbar > .container .navbar-brand {
+  color: #32434d;
+}
+
+.navbar-default {
+  background: #fff;
+}

@@ -1,8 +1,11 @@
 /*
  *= require_self
  *= require normalize
- *= require application_defaults
- *= require requests
  *= require syntax_highlight_theme
+ *= require application_defaults
+ *= require layout
+ *= require navigation
+ *= require footer
+ *= require requests
  *= require embed
  */
