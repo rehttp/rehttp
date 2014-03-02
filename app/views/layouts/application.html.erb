@@ -7,9 +7,32 @@
 </head>
 <body>
 
-<div class="container">
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <a class="navbar-brand" href="<%= site_url %>">REHTTP</a>
+    <p class="navbar-text navbar-right">
+      <a href="https://github.com/rehttp/rehttp/blob/master/README.md">Documentation</a>
+      <a href="https://github.com/rehttp/rehttp/issues">Report a bug</a>
+    </p>
+  </div>
+</nav>
+
+<div id="wrap" class="container">
   <%= yield %>
+  <div class="push"></div>
 </div>
+
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        ReHTTP is an open source project, constructed using
+        <span class="glyphicon glyphicon-heart"></span> &mdash; <a href="https://github.com/rehttp/rehttp">contribute</a> today!
+      </div>
+    </div>
+  </div>
+</footer>
 
 <%= javascript_include_tag 'application' %>
 </body>
