@@ -1,0 +1,22 @@
+footer, .push {
+  height: 50px;
+}
+
+footer {
+  background: #363840;
+  color: #74788a;
+  margin-top: 30px;
+  padding-top: 15px;
+  bottom: 0;
+
+  a {
+    color: #878a99;
+    text-decoration: none;
+    border-bottom: 1px dotted #878a99;
+
+    &:hover {
+      text-decoration: none;
+      color: inherit;
+    }
+  }
+}

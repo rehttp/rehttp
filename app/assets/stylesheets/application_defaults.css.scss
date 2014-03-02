@@ -1,10 +1,14 @@
 $container-lg: 75%;
 
 @import 'bootstrap';
+@import url('http://fonts.googleapis.com/css?family=Droid+Sans:400,700');
 
-$sans-font-stack: "Helvetica Neue", helvetica, arial, san-serif;
-$mono-font-stack: Monaco, Consolas, "Libration Mono", monospace;
+/* Base font stacks */
+$sans-font-stack: 'Droid Sans', 'Helvetica Neue', helvetica, arial, san-serif;
+$mono-font-stack: Monaco, Consolas, 'Libration Mono', monospace;
 
+
+/* Standard element normalising */
 * {
   font-family: $sans-font-stack;
 }
@@ -13,18 +17,28 @@ body {
   margin-top: 20px;
 }
 
-h2 {
-  padding: 0 0 10px 0;
+h1,
+h3,
+h4 {
+  color: #e1455e;
 }
 
-h4 {
-  padding: 10px 0;
+h2 {
+  color: #32434d;
+  font-size: 26px;
+  font-weight: bold;
+  padding: 0 0 10px 0;
 }
 
 h3 {
   padding: 0;
   margin: 0;
   font-size: 18px;
+}
+
+h4 {
+  font-weight: bold;
+  padding: 10px 0;
 }
 
 pre {
@@ -37,6 +51,16 @@ code,
 code span {
   font-size: 12px;
   font-family: $mono-font-stack;
-  background: transparent;
+  background: #fff;
   line-height: 1.4;
+}
+
+a {
+  color: #537080;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+    color: #e1455e;
+  }
 }
