@@ -14,9 +14,9 @@ module RequestsHelper
     word.gsub(/\w+|-/, &:capitalize)
   end
 
-  # Determine if the response is JSON.
+  # Determine if the given string contains JSON.
   #
-  # Using the content-type header, check if JSON is defined within it.
+  # Used for checking HTTP content-type headers to apply correct formatting.
   #
   # Returns boolean.
   def json_response?(header_string)
@@ -25,7 +25,7 @@ module RequestsHelper
 
   # Display available request methods.
   #
-  # Returns array of HTTP requets verbs.
+  # Returns array of HTTP request verbs.
   def request_method_options
     %w(GET POST PUT DELETE OPTIONS HEAD PATCH)
   end
