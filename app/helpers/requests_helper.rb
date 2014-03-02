@@ -20,10 +20,13 @@ module RequestsHelper
   #
   # Returns boolean.
   def json_response?(header_string)
-    if header_string.include? 'json'
-      return true
-    else
-      return false
-    end
+    header_string.include? 'json'
+  end
+
+  # Display available request methods.
+  #
+  # Returns array of HTTP requets verbs.
+  def request_method_options
+    %w(GET POST PUT DELETE OPTIONS HEAD PATCH)
   end
 end

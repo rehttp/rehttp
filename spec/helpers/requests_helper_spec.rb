@@ -11,7 +11,7 @@ describe RequestsHelper do
   end
 
   it 'returns false when JSON is not in the header' do
-    content_type_header = 'application/html; charset=utf-8'
+    content_type_header = 'text/html; charset=utf-8'
     expect(json_response?(content_type_header)).to be_false
   end
 end
