@@ -33,4 +33,13 @@ Rehttp::Application.configure do
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
+
+  # Only show fatal errors. Everything else is irrelevant.
+  config.log_level = :fatal
+
+  # Don't show SQL output whilst on the test environment.
+  config.after_initialize do
+    ActiveRecord::Base.logger = Rails.logger.clone
+    ActiveRecord::Base.logger.level = Logger::INFO
+  end
 end
