@@ -1,5 +1,3 @@
-require 'securerandom'
-
 class RequestsController < ApplicationController
   include ApplicationHelper
   include RequestsHelper
@@ -9,23 +7,38 @@ class RequestsController < ApplicationController
     css_path = (development_environment?) ? 'application.css' : path_with_digest('application', 'css')
     js_path = (development_environment?) ? 'application.js' : path_with_digest('application', 'js')
 
-    find_request(params[:rid])
-    respond_to do |format|
-      format.html { render 'shared_request' }
-      format.js   {
-        render :partial => 'requests/embed/embed',
-        :locals => {
-          :css_path => "#{site_url}/assets/#{css_path}",
-          :js_path => "#{site_url}/assets/#{js_path}"
+    rid = find_request(params[:rid])
+   
+    if rid.present?
+      setup_template_variables(rid)
+      
+      respond_to do |format|
+        format.html { 
+          render 'shared_request' 
         }
-      }
+        format.js   {
+          render :partial => 'requests/embed/embed',
+          :locals => {
+            :css_path => "#{site_url}/assets/#{css_path}",
+            :js_path => "#{site_url}/assets/#{js_path}"
+          }
+        }
+      end
+    else
+      render_404
     end
   end
 
   # Handle showing the raw request/response output data.
   def show_raw
-    find_request(params[:rid])
-    render :partial => 'single_request'
+    rid = find_request(params[:rid])
+    
+    if rid.present?
+      setup_template_variables(rid)
+      render :partial => 'single_request'
+    else
+      render_404
+    end
   end
 
   def new
@@ -50,7 +63,7 @@ class RequestsController < ApplicationController
     # Build the request parameters and correct structure for inserting into the
     # database.
     def request_params
-      rid                = SecureRandom.uuid[0, 8]
+      rid                = create_uuid
       request_type       = params[:request_type]
       request_url        = params[:url]
       request_parameters = params[:request_parameters]
@@ -125,7 +138,15 @@ class RequestsController < ApplicationController
     # Returns the request object as well as nicely formatted request and
     # response data.
     def find_request(rid)
-      @rid = Requests.find_by(rid: rid)
+      rid = Requests.find_by(rid: rid)
+    end
+
+    # Expose instance variables for the templates to use.
+    #
+    # Based on the request ID, make the response data and request data
+    # available.
+    def setup_template_variables(rid)
+      @rid = rid
       @request_data = JSON.parse @rid.request_data
       @response_data = JSON.parse @rid.response_data
     end

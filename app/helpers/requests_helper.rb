@@ -1,4 +1,13 @@
+require 'securerandom'
+
 module RequestsHelper
+  # Create an 8 character UUID.
+  #
+  # Returns a UUID of a string.
+  def create_uuid
+    SecureRandom.uuid[0, 8]    
+  end
+
   # Format a HTTP header output.
   #
   # This method captializes the first letter of each word and after each hyphen.
