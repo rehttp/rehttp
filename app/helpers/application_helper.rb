@@ -56,4 +56,12 @@ module ApplicationHelper
     full_filepath = "#{filename}.#{file_extension}"
     "#{filename}-#{Rails.application.assets.find_asset(full_filepath).digest}.#{file_extension}"
   end
+
+  # Render a 404 page.
+  def render_404
+    render :file => "#{::Rails.root}/public/404.html", 
+           :status => '404 Not Found', 
+           :layout => false
+    return
+  end
 end
