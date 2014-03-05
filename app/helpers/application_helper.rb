@@ -13,7 +13,7 @@ module ApplicationHelper
   #
   # Returns a string of the domain.
   def site_url
-    if ENV['RACK_ENV'] == 'development'
+    if development_environment?
       request.protocol + request.host + ':' + request.port.to_s
     else
       request.protocol + 'rehttp.me'
