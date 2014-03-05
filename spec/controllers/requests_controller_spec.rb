@@ -28,14 +28,8 @@ describe RequestsController do
     context 'when request ID is not created' do
       it 'throws a 404' do
         get 'show_raw', :rid => create_uuid
-        
-        expect(response.status).to eq(404)
-      end
-    end
 
-    context 'when a request is private' do 
-      it 'appends correct no-cache headers' do
-        # check the cache control header
+        expect(response.status).to eq(404)
       end
     end
   end
