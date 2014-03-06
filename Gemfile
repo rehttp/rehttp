@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby '2.1.0'
 
 # Rails.
-gem 'rails', '4.0.2'
+gem 'rails', '4.0.3'
 gem 'turbolinks'
 gem 'rails_12factor'
 
