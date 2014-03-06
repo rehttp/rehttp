@@ -34,6 +34,9 @@ group :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'capybara'
+  gem 'cucumber-rails', :require => false
+  gem 'database_cleaner'
+  gem 'fuubar'
   gem 'guard-rspec'
 end
 
