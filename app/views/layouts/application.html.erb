@@ -3,6 +3,8 @@
 <head>
   <%= stylesheet_link_tag 'application' %>
   <title><%= title %></title>
+  <meta name="ruby_version" content="<%= ruby_version %>" />
+  <meta name="commit_sha" content="<%= git_head_sha %>" />
   <%= csrf_meta_tags %>
 </head>
 <body>

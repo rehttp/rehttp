@@ -64,4 +64,18 @@ module ApplicationHelper
            status: '404 Not Found',
            layout: false
   end
+
+  # Internal: Display the current version of Ruby.
+  #
+  # Returns a string of the version.
+  def ruby_version
+    RUBY_VERSION
+  end
+
+  # Internal: Get the current HEAD SHA of the codebase.
+  #
+  # Returns the commit SHA as a trimmed string.
+  def git_head_sha
+    File.open("#{Rails.root}/REVISION").read.strip.to_s[0, 8]
+  end
 end
