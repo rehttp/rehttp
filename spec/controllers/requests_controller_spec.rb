@@ -10,7 +10,7 @@ describe RequestsController do
 
   describe 'POST #create' do
     it 'returns HTTP success' do
-      request = build(:requests)
+      build(:requests)
       response.should be_success
     end
   end
@@ -19,7 +19,7 @@ describe RequestsController do
     context 'when request ID is available' do
       it 'returns HTTP success' do
         request = create(:requests)
-        get 'show_raw', :rid => request.rid
+        get 'show_raw', rid: request.rid
 
         response.should be_success
       end
@@ -27,7 +27,7 @@ describe RequestsController do
 
     context 'when request ID is not created' do
       it 'throws a 404' do
-        get 'show_raw', :rid => create_uuid
+        get 'show_raw', rid: create_uuid
 
         expect(response.status).to eq(404)
       end
