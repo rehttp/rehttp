@@ -22,7 +22,7 @@ class RequestsController < ApplicationController
     end
   end
 
-  # Handle showing the raw request/response output data.
+  # Public: Handle showing the raw request/response output data.
   def show_raw
     rid = find_request(params[:rid])
     return render_404 if rid.nil?
@@ -51,8 +51,8 @@ class RequestsController < ApplicationController
 
   private
 
-  # Build the request parameters and correct structure for inserting into the
-  # database.
+  # Internal: Build the request parameters and correct structure for inserting
+  # into the database.
   def request_params
     rid                = create_uuid
     request_type       = params[:request_type]
@@ -122,7 +122,7 @@ class RequestsController < ApplicationController
     }
   end
 
-  # Find a request based on request ID.
+  # Internal: Find a request based on request ID.
   #
   # Returns the request object as well as nicely formatted request and
   # response data.
@@ -130,7 +130,7 @@ class RequestsController < ApplicationController
     Requests.find_by(rid: rid)
   end
 
-  # Expose instance variables for the templates to use.
+  # Internal: Expose instance variables for the templates to use.
   #
   # Based on the request ID, make the response data and request data
   # available.

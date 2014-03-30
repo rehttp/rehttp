@@ -2,14 +2,14 @@ require 'securerandom'
 
 # Helper for the Requests class.
 module RequestsHelper
-  # Create an 8 character UUID.
+  # Internal: Create an 8 character UUID.
   #
   # Returns a UUID of a string.
   def create_uuid
     SecureRandom.uuid[0, 8]
   end
 
-  # Format a HTTP header output.
+  # Internal: Format a HTTP header output.
   #
   # This method captializes the first letter of each word and after each
   # hyphen.
@@ -25,7 +25,7 @@ module RequestsHelper
     word.gsub(/\w+|-/, &:capitalize)
   end
 
-  # Determine if the given string contains JSON.
+  # Internal: Determine if the given string contains JSON.
   #
   # Used for checking HTTP content-type headers to apply correct formatting.
   #
@@ -34,7 +34,7 @@ module RequestsHelper
     header_string.include? 'json'
   end
 
-  # Display available request methods.
+  # Internal: Display available request methods.
   #
   # Returns array of HTTP request verbs.
   def request_method_options
