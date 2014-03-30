@@ -76,6 +76,6 @@ module ApplicationHelper
   #
   # Returns the commit SHA as a trimmed string.
   def commit_hash
-    ENV['COMMIT_HASH'][0, 8] =|| 'local'
+    ENV['COMMIT_HASH'][0, 8] ||= 'local'
   end
 end
