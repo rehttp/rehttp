@@ -75,7 +75,7 @@ module ApplicationHelper
   # Internal: Get the current HEAD SHA of the codebase.
   #
   # Returns the commit SHA as a trimmed string.
-  def git_head_sha
-    File.open("#{Rails.root}/REVISION").read.strip.to_s[0, 8]
+  def commit_hash
+    ENV['COMMIT_HASH'][0, 8] =|| 'local'
   end
 end
