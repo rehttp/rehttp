@@ -1,3 +1,4 @@
+# Module to contain all the application wide helpers.
 module ApplicationHelper
   # Run environment check for development environment.
   #
@@ -8,8 +9,8 @@ module ApplicationHelper
 
   # Define a correct base URL.
   #
-  # To ease the transition between environments, this helper detects if it is on
-  # a developent box and adjusts the URL's accordingly.
+  # To ease the transition between environments, this helper detects if it is
+  # on a developent box and adjusts the URL's accordingly.
   #
   # Returns a string of the domain.
   def site_url
@@ -59,9 +60,8 @@ module ApplicationHelper
 
   # Render a 404 page.
   def render_404
-    render :file => "#{::Rails.root}/public/404.html", 
-           :status => '404 Not Found', 
-           :layout => false
-    return
+    render file: "#{::Rails.root}/public/404.html",
+           status: '404 Not Found',
+           layout: false
   end
 end
