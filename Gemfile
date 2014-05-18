@@ -43,7 +43,5 @@ end
 group :production do
   # Monitoring.
   gem 'newrelic_rpm'
-
-  # Bug monitoring.
-  # gem 'bugsnag'
+  gem 'appsignal'
 end

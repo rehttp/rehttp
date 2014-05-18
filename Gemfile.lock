@@ -27,6 +27,10 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
+    appsignal (0.8.11)
+      activesupport (>= 3.0)
+      rack
+      thread_safe
     arel (5.0.0)
     atomic (1.1.16)
     better_errors (1.1.0)
@@ -223,6 +227,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  appsignal
   better_errors
   binding_of_caller
   bootstrap-sass (~> 3.0.3.0)
