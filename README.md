@@ -43,30 +43,30 @@ embedding of the body you can choose what parts (navigation, URL and headers) of
 the request you would would like to show. Below are some screenshots and the
 embed code to achieve them.
 
-**Just body response** `<script src="http://rehttp.me/r/a93d2a2a.js"></script>`.
+**Just body response** `<script src="https://rehttp.me/r/a93d2a2a.js"></script>`.
 
 ![no-embed-options](screenshots/embed-no-options.png)
 
-**Body with URL** `<script src="http://rehttp.me/r/a93d2a2a.js?show_url=true"></script>`
+**Body with URL** `<script src="https://rehttp.me/r/a93d2a2a.js?show_url=true"></script>`
 
 ![no-embed-options](screenshots/embed-show-url.png)
 
-**Body with navigation** `<script src="http://rehttp.me/r/a93d2a2a.js?show_navigation=true"></script>`
+**Body with navigation** `<script src="https://rehttp.me/r/a93d2a2a.js?show_navigation=true"></script>`
 
 ![no-embed-options](screenshots/embed-show-navigation.png)
 
-**Body with HTTP headers** `<script src="http://rehttp.me/r/a93d2a2a.js?show_headers=all"></script>`
+**Body with HTTP headers** `<script src="https://rehttp.me/r/a93d2a2a.js?show_headers=all"></script>`
 
 ![no-embed-options](screenshots/embed-show-headers.png)
 
 In addition to the examples above, you can also mix and match the embed request
 params to suit your needs.
 
-**URL with navigation** `<script src="http://rehttp.me/r/a93d2a2a.js?show_navigaton=true&show_url=true"></script>`
+**URL with navigation** `<script src="https://rehttp.me/r/a93d2a2a.js?show_navigaton=true&show_url=true"></script>`
 
 ![no-embed-options](screenshots/embed-mix-1.png)
 
-**URL with HTTP headers** `<script src="http://rehttp.me/r/a93d2a2a.js?show_url=true&show_headers=all"></script>`
+**URL with HTTP headers** `<script src="https://rehttp.me/r/a93d2a2a.js?show_url=true&show_headers=all"></script>`
 
 ![no-embed-options](screenshots/embed-mix-2.png)
 
@@ -80,7 +80,7 @@ name in the `show_headers` query parameter.
 For example, if you only want to show the "status" and "content-type" HTTP
 headers you would use the following snippet.
 
-`<script src="http://rehttp.me/r/a93d2a2a.js?show_headers=status,content-type"></script>`
+`<script src="https://rehttp.me/r/a93d2a2a.js?show_headers=status,content-type"></script>`
 
 Which would give you the following output:
 
